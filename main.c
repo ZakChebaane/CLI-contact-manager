@@ -9,8 +9,11 @@ int main(void) {
   // Print start screen
   // If sequence for options 1 - 5 : take user input
 
+  int countIndex = 0;
+  int heapSize = 2;
+
   // create Array of contacts with maloc()
-  Contact *contacts = malloc(sizeof(Contact));
+  Contact *contacts = malloc(heapSize * sizeof(Contact));
 
   if (contacts == NULL) {
     printf("Memory Allocation Failed.\n");
@@ -18,6 +21,12 @@ int main(void) {
   }
 
   printDetails();
+  int selection = selectOption();
+  if (selection == 1) {
+    listContacts(contacts);
+  } else if (selection == 2) {
+    addContact(contacts);
+  }
 
   strcpy(contacts[0].name, "Zak");
 

@@ -8,5 +8,8 @@ typedef struct {
 } Contact;
 
 void printDetails(void);
+int selectOption(void);
+void listContacts(Contact *contacts);
+void addContact(Contact *contacts);
 
 #endif
