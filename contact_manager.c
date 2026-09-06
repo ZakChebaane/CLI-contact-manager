@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "contact_manager.h"
 
 void printDetails(void) {
   printf("==================================\n");

@@ -6,5 +6,5 @@ set(CMAKE_C_STANDARD 11)
 add_compile_options(-Wall -Wextra -pedantic)
 
 add_executable(main
-        main.c)
-
+        main.c
+        contact_manager.c)

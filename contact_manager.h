@@ -1,8 +1,6 @@
 #ifndef CONTACT_MANAGER
 #define CONTACT_MANAGER
 
-#include "contact_manager.c"
-
 typedef struct {
   char name[15];
   char phoneNumber[10];
