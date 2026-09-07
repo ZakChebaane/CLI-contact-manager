@@ -25,7 +25,7 @@ int main(void) {
   if (selection == 1) {
     listContacts(contacts);
   } else if (selection == 2) {
-    addContact(contacts);
+    addContact(contacts, &countIndex, &heapSize);
   }
 
   strcpy(contacts[0].name, "Zak");
