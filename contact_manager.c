@@ -40,7 +40,11 @@ int selectOption(void) {
     }
   }
 }
-void listContacts(Contact *contacts) {}
+void listContacts(Contact *contacts, int *countIndex) {
+  if (*countIndex == 0) {
+    printf("[INFO] Contact list is empty.\n");
+  }
+}
 void addContact(Contact **contacts, int *countIndex, int *heapSize) {
   if (*countIndex == *heapSize) {
     printf("[DEBUG] Capacity full (%d/%d). Doubling heap buffer via realloc() "
