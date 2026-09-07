@@ -10,6 +10,6 @@ typedef struct {
 void printDetails(void);
 int selectOption(void);
 void listContacts(Contact *contacts);
-void addContact(Contact *contacts, int *countIndex, int *heapSize);
+void addContact(Contact **contacts, int *countIndex, int *heapSize);
 
 #endif

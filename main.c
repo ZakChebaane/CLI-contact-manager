@@ -28,13 +28,11 @@ int main(void) {
     if (selection == 1) {
       listContacts(contacts);
     } else if (selection == 2) {
-      addContact(contacts, &countIndex, &heapSize);
+      addContact(&contacts, &countIndex, &heapSize);
     } else if (selection == 5) {
       runLoop = 0;
     }
   }
-
-  // strcpy(contacts[0].name, "Zak");
 
   free(contacts);
   contacts = NULL;
