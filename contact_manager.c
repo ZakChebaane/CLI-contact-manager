@@ -40,9 +40,21 @@ int selectOption(void) {
     }
   }
 }
-void listContacts(Contact *contacts, int *countIndex) {
+void listContacts(Contact *contacts, int *countIndex, int *heapSize) {
   if (*countIndex == 0) {
     printf("[INFO] Contact list is empty.\n");
+  } else {
+    printf("==================================================================="
+           "=============\n");
+    printf("ID    NAME                 PHONE                 EMAIL\n");
+    printf("==================================================================="
+           "=============\n");
+    for (int i = 0; i < *countIndex; i++) {
+      printf("%d    %s                  %s                    %s\n", contacts[i].id, contacts[i].name, contacts[i].phoneNumber, contacts[i].email);
+    }
+    printf("==================================================================="
+           "=============\n");
+    printf("Total: %d contacts (Heap capacity: %d)\n", *countIndex, *heapSize);
   }
 }
 void addContact(Contact **contacts, int *countIndex, int *heapSize) {
@@ -58,6 +70,7 @@ void addContact(Contact **contacts, int *countIndex, int *heapSize) {
     }
   }
 
+  (*contacts)[*countIndex].id = *countIndex + 1;
   printf("Enter Name: ");
   fgets((*contacts)[*countIndex].name, sizeof((*contacts)[*countIndex].name),
         stdin);

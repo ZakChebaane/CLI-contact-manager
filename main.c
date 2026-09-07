@@ -26,7 +26,7 @@ int main(void) {
   while (runLoop) {
     int selection = selectOption();
     if (selection == 1) {
-      listContacts(contacts, &countIndex);
+      listContacts(contacts, &countIndex, &heapSize);
     } else if (selection == 2) {
       addContact(&contacts, &countIndex, &heapSize);
     } else if (selection == 5) {
