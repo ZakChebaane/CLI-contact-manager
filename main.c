@@ -1,16 +1,18 @@
+#include "contact_manager.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "contact_manager.h"
 
 int main(void) {
   // Check for previous data print [info]
-  // print [DEBUG] heap size (should start with 2 slots, then when capacity is reached it will double)
-  // Print start screen
-  // If sequence for options 1 - 5 : take user input
+  // print [DEBUG] heap size (should start with 2 slots, then when capacity is
+  // reached it will double) Print start screen If sequence for options 1 - 5 :
+  // take user input
 
   int countIndex = 0;
   int heapSize = 2;
+
+  int runLoop = 1;
 
   // create Array of contacts with maloc()
   Contact *contacts = malloc(heapSize * sizeof(Contact));
@@ -21,14 +23,18 @@ int main(void) {
   }
 
   printDetails();
-  int selection = selectOption();
-  if (selection == 1) {
-    listContacts(contacts);
-  } else if (selection == 2) {
-    addContact(contacts, &countIndex, &heapSize);
+  while (runLoop) {
+    int selection = selectOption();
+    if (selection == 1) {
+      listContacts(contacts);
+    } else if (selection == 2) {
+      addContact(contacts, &countIndex, &heapSize);
+    } else if (selection == 5) {
+      runLoop = 0;
+    }
   }
 
-  strcpy(contacts[0].name, "Zak");
+  // strcpy(contacts[0].name, "Zak");
 
   free(contacts);
   contacts = NULL;

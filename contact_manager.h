@@ -3,8 +3,8 @@
 
 typedef struct {
   char name[15];
-  char phoneNumber[10];
-  char email[15];
+  char phoneNumber[15];
+  char email[30];
 } Contact;
 
 void printDetails(void);
