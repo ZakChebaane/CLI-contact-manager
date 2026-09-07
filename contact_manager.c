@@ -59,23 +59,18 @@ void addContact(Contact **contacts, int *countIndex, int *heapSize) {
         stdin);
   (*contacts)[*countIndex].name[strcspn((*contacts)[*countIndex].name, "\n")] =
       '\0';
-  *countIndex += 1;
-  /*
   printf("Enter Email: ");
-    fgets(contacts[*countIndex]->email,
-    sizeof(contacts[*countIndex]->email), stdin);
-    contacts[*countIndex]->email[strcspn(contacts[*countIndex]->email, "\n")] =
-        '\0';
-    printf("Enter Phone Number: ");
-    fgets(contacts[*countIndex]->phoneNumber,
-          sizeof(contacts[*countIndex]->phoneNumber), stdin);
-    contacts[*countIndex]
-        ->phoneNumber[strcspn(contacts[*countIndex]->phoneNumber, "\n")] = '\0';
+  fgets((*contacts)[*countIndex].email, sizeof((*contacts)[*countIndex].email),
+        stdin);
+  (*contacts)[*countIndex]
+      .email[strcspn((*contacts)[*countIndex].email, "\n")] = '\0';
+  printf("Enter Phone Number: ");
+  fgets((*contacts)[*countIndex].phoneNumber,
+        sizeof((*contacts)[*countIndex].phoneNumber), stdin);
+  (*contacts)[*countIndex]
+      .phoneNumber[strcspn((*contacts)[*countIndex].phoneNumber, "\n")] = '\0';
 
-    printf("[SUCCESS] Added '%s'. (Count: %d/%d)\n",
-    contacts[*countIndex]->name, *countIndex + 1, *heapSize);
-
-    */
-  // printf("%s %s %s\n", contacts[*countIndex].name,
-  // contacts[*countIndex].email, contacts[*countIndex].phoneNumber);
+  printf("[SUCCESS] Added '%s'. (Count: %d/%d)\n",
+         (*contacts)[*countIndex].name, *countIndex + 1, *heapSize);
+  *countIndex += 1;
 }
