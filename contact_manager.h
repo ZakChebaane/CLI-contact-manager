@@ -12,5 +12,7 @@ void printDetails(void);
 int selectOption(void);
 void listContacts(Contact *contacts, int *countIndex, int *heapSize);
 void addContact(Contact **contacts, int *countIndex, int *heapSize);
+void searchContact(Contact *contacts, int *countIndex);
+void deleteContact(void);
 
 #endif

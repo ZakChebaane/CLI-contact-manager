@@ -29,7 +29,10 @@ int main(void) {
       listContacts(contacts, &countIndex, &heapSize);
     } else if (selection == 2) {
       addContact(&contacts, &countIndex, &heapSize);
-    } else if (selection == 5) {
+    } else if (selection == 3) {
+      searchContact(contacts, &countIndex);
+    } 
+    else if (selection == 5) {
       runLoop = 0;
     }
   }

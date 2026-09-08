@@ -50,7 +50,8 @@ void listContacts(Contact *contacts, int *countIndex, int *heapSize) {
     printf("==================================================================="
            "=============\n");
     for (int i = 0; i < *countIndex; i++) {
-      printf("%d    %s                  %s                    %s\n", contacts[i].id, contacts[i].name, contacts[i].phoneNumber, contacts[i].email);
+      printf("%d     %s                   %s           %s\n", contacts[i].id,
+             contacts[i].name, contacts[i].phoneNumber, contacts[i].email);
     }
     printf("==================================================================="
            "=============\n");
@@ -90,4 +91,23 @@ void addContact(Contact **contacts, int *countIndex, int *heapSize) {
   printf("[SUCCESS] Added '%s'. (Count: %d/%d)\n",
          (*contacts)[*countIndex].name, *countIndex + 1, *heapSize);
   *countIndex += 1;
+}
+void searchContact(Contact *contacts, int *countIndex) {
+  char nameStr[15];
+  printf("Enter search query: ");
+  fgets(nameStr, sizeof(nameStr), stdin);
+  nameStr[strcspn(nameStr, "\n")] = '\0';
+  printf("---------------------------------------------------------------------"
+         "-----------\n");
+  int found = 0;
+  // Search for str
+  for (int i = 0; i < *countIndex; i++) {
+    if (strstr(contacts[i].name, nameStr) != NULL) {
+      found += 1;
+      printf("* ID %d: %s | %s | %s\n", contacts[i].id, contacts[i].name, contacts[i].phoneNumber, contacts[i].email);
+    }
+  }
+  printf("Found %d match:\n", found);
+  printf("---------------------------------------------------------------------"
+         "-----------\n");
 }
