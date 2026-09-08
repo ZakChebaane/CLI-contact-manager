@@ -1,5 +1,6 @@
 #include "contact_manager.h"
 #include "string.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -97,14 +98,25 @@ void searchContact(Contact *contacts, int *countIndex) {
   printf("Enter search query: ");
   fgets(nameStr, sizeof(nameStr), stdin);
   nameStr[strcspn(nameStr, "\n")] = '\0';
+  // convert str to lowercase
+  for (size_t i = 0; i < strlen(nameStr); i++) {
+    nameStr[i] = tolower(nameStr[i]);
+  }
   printf("---------------------------------------------------------------------"
          "-----------\n");
   int found = 0;
   // Search for str
   for (int i = 0; i < *countIndex; i++) {
-    if (strstr(contacts[i].name, nameStr) != NULL) {
+    char contactsName[sizeof(contacts[i].name)];
+    strncpy(contactsName, contacts[i].name, sizeof(contactsName));
+    for (size_t i = 0; i < strlen(contactsName); i++) {
+      contactsName[i] = tolower(contactsName[i]);
+    }
+
+    if (strstr(contactsName, nameStr) != NULL) {
       found += 1;
-      printf("* ID %d: %s | %s | %s\n", contacts[i].id, contacts[i].name, contacts[i].phoneNumber, contacts[i].email);
+      printf("* ID %d: %s | %s | %s\n", contacts[i].id, contacts[i].name,
+             contacts[i].phoneNumber, contacts[i].email);
     }
   }
   printf("Found %d match:\n", found);
