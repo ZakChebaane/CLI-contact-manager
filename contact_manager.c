@@ -123,3 +123,41 @@ void searchContact(Contact *contacts, int *countIndex) {
   printf("---------------------------------------------------------------------"
          "-----------\n");
 }
+void deleteContact(Contact **contacts, int *countIndex, int *heapSize) {
+  int selectedID = 0;
+  int maxIndex = (*countIndex) - 1;
+  printf("Enter ID of contact to remove: ");
+  scanf("%d", &selectedID);
+  // flush stdin so next time it is used there isnt a random \n in there
+  while (getchar() != '\n')
+    ;
+  for (int i = 0; i < *countIndex; i++) {
+    if ((*contacts)[i].id == selectedID) {
+      if ((*contacts)[i].id != *countIndex) {
+        // Contact is the not the end one
+        // copy values from the last contact to the contact we want to delete
+        strncpy((*contacts)[i].name, (*contacts)[maxIndex].name,
+                sizeof((*contacts)[maxIndex].name));
+        strncpy((*contacts)[i].email, (*contacts)[maxIndex].email,
+                sizeof((*contacts)[maxIndex].email));
+        strncpy((*contacts)[i].phoneNumber, (*contacts)[maxIndex].phoneNumber,
+                sizeof((*contacts)[maxIndex].phoneNumber));
+      }
+      // remove end contact
+      *countIndex -= 1;
+      // reallocate memory if needed
+      if ((*heapSize) / 2 == *countIndex) {
+        *heapSize /= 2;
+        *contacts = realloc(*contacts, (*heapSize) * sizeof(Contact));
+        if (*contacts == NULL) {
+          printf("Memory Reallocation Failed\n");
+          return;
+        } else {
+          printf("[DEBUG] Deallocating memory, New heap size -> %d, (Size: %d/%d)\n", *heapSize, *countIndex, *heapSize);
+        }
+      }
+      return;
+    }
+  }
+  printf("[ERROR] (ID: %d) does not exist\n", selectedID);
+}
